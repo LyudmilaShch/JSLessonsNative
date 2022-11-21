@@ -32,26 +32,27 @@ function sum(a: number) {
 console.log(sum(3)(6))
 alert(sum(1)(2))
 // Task 02
-// Реализовать функцию makeCounter которая работает следующим образом:
-// const counter = makeCounter();
+// Реализовать функцию makescounter которая работает следующим образом:
+// const counter = makescounter();
 // counter(); // 1
 // counter(); // 2
-// const counter2 = makeCounter();
+// const counter2 = makescounter();
 // counter2(); // 1
 // counter(); // 3
-const makeCounter = () => {
+// @ts-ignore
+const makescounter = () => {
     let count = 0;
     return () => {
         count++
         console.log(count)
     }
 }
-const counter = makeCounter();
-counter(); // 1
-counter(); // 2
-const counter2 = makeCounter();
+const counter3 = makescounter();
+counter3(); // 1
+counter3(); // 2
+const counter2 = makescounter();
 counter2(); // 1
-counter(); // 3
+counter3(); // 3
 
 // Task 03
 // Переписать функцию из Task 02 так, что бы она принимала число в качестве аргумента и это число было стартовым значением счетчика
@@ -106,6 +107,7 @@ function superSum(n:number) {
 
 // Task 05
 // решить все задачи по рекурсии которые даны в конце статьи https://learn.javascript.ru/recursion
+// @ts-ignore
 function sumTo(n) {
     if (n == 1) return 1;
     return n + sumTo(n - 1)
@@ -113,6 +115,7 @@ function sumTo(n) {
 
 alert(sumTo(100)); // 5050
 
+// @ts-ignore
 function factorial(n) {
     if (n == 1) return 1;
     return n * factorial(n - 1)
@@ -121,6 +124,7 @@ function factorial(n) {
 alert(factorial(5)); // 120
 
 
+// @ts-ignore
 function fib(n) {
     if (n == 1 || n == 2) return 1;
     return fib(n - 1) + fib(n - 2)
@@ -131,6 +135,7 @@ alert(fib(3)); // 2
 alert(fib(7)); // 13
 
 
+// @ts-ignore
 let list = {
     value: 1,
     next: {
@@ -145,6 +150,7 @@ let list = {
     }
 };
 
+// @ts-ignore
 function printList(list) {
 
     alert(list.value); // выводим текущий элемент
@@ -157,6 +163,7 @@ function printList(list) {
 
 printList(list);
 
+// @ts-ignore
 let list = {
     value: 1,
     next: {
@@ -171,6 +178,7 @@ let list = {
     }
 };
 
+// @ts-ignore
 function printList(list) {
 
     // выводим текущий элемент
@@ -185,19 +193,20 @@ printList(list);
 // Task 06
 // написать функцию, которая повторяет функционал метода flat массива на всю глубину.
 
-function makeFlat(value) {
-    return value.reduce(function (arr, e) {
+// function makeFlat(value) {
+//     return value.reduce(function (arr, e) {
+//
+//         if (Array.isArray(e)) {
+//             arr.push(...makeFlat(e))
+//
+//         }
+//         else arr.push(e);
+//         return arr;
+//     }, []);
+// }
 
-        if (Array.isArray(e)) {
-            arr.push(...makeFlat(e))
 
-        }
-        else arr.push(e);
-        return arr;
-    }, []);
-}
-
-
+// @ts-ignore
 alert(makeFlat([333, [222, [444, [985]]]]))
 
 // just a plug

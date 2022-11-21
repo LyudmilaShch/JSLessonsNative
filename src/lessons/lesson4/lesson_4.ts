@@ -7,26 +7,52 @@ console.log('lesson 4');
 // Task 01
 // Создайте промис, который постоянно находиться в состоянии pending.
 // В конструкторе промиса выведите в консоль сообщение "Promise is created".
-
-
+let pendingPromise = new Promise((res, rej) => {
+    console.log( "Promise is created")
+})
+console.log(pendingPromise)
 // Task 02
 // Создайте промис, который после создания сразу же переходит в состояние resolve
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
 
+let resolvePromise = new Promise((res, rej) => {
+    res('i am resolved')
+    console.log( "Promise Data")
+})
 
+resolvePromise.then((res) => {
+    console.log(res)
+})
 // Task 03
 // Создайте промис, который после создания сразу же переходит в состояние rejected
 // и возвращает строку 'Promise Error'
 // Получите данные промиса и выведите их в консоль
+let rejectedPromise = new Promise((res, rej) => {
+    rej('i am rejected')
+    console.log('Promise Error')
+})
 
+rejectedPromise.then((rej) => {
+    console.log(rej)
+})
 
 // Task 04
 // Создайте промис, который переходит в состояние resolved через 3с.
 // (Используйте setTimeout)
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
+let resolve3secPromise = new Promise((res, rej) => {
+    setTimeout(() => {
+        res( "Promise Data")
+    }, 3000)
+    return
 
+})
+console.log(resolve3secPromise)
+resolve3secPromise.then((res) => {
+    console.log(res)
+})
 
 // Task 05
 // Создайте литерал объекта handlePromise со следующими свойствами:
