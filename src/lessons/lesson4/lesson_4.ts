@@ -7,6 +7,8 @@ console.log('lesson 4');
 // Task 01
 // Создайте промис, который постоянно находиться в состоянии pending.
 // В конструкторе промиса выведите в консоль сообщение "Promise is created".
+
+console.log('------lesson 4 -- Task1-----')
 let pendingPromise = new Promise((res, rej) => {
     console.log( "Promise is created")
 })
@@ -16,18 +18,23 @@ console.log(pendingPromise)
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
 
+/*console.log('------lesson 4 -- Task2-----')
 let resolvePromise = new Promise((res, rej) => {
-    res('i am resolved')
+    res("Im resolved")
     console.log( "Promise Data")
 })
 
 resolvePromise.then((res) => {
     console.log(res)
 })
+
+console.log(resolvePromise)*/
 // Task 03
 // Создайте промис, который после создания сразу же переходит в состояние rejected
 // и возвращает строку 'Promise Error'
 // Получите данные промиса и выведите их в консоль
+
+console.log('------lesson 4 -- Task3-----')
 let rejectedPromise = new Promise((res, rej) => {
     rej('i am rejected')
     console.log('Promise Error')
@@ -42,6 +49,8 @@ rejectedPromise.then((rej) => {
 // (Используйте setTimeout)
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
+
+console.log('------lesson 4 -- Task4-----')
 let resolve3secPromise = new Promise((res, rej) => {
     setTimeout(() => {
         res( "Promise Data")
@@ -67,6 +76,38 @@ resolve3secPromise.then((res) => {
 // свойства resolve и reject получают ссылки на соответствующие функции
 // resolve и reject. Следующие два обработчика запускают методы resolve и reject.
 
+console.log('------lesson 4 -- Task5-----')
+
+let handlePromise = {
+    promise:  null,
+    resolve: null,
+    reject: null,
+    onSuccess: (paramName: string) => {console.log(`Promise is resolved with data: ${paramName}`)},
+    onError: (paramName: string) => {console.log(`Promise is rejected with error: ${paramName}`)}
+}
+
+const createPromise = () => {
+    // @ts-ignore
+    handlePromise.promise = new Promise((res, rej) => {
+        // @ts-ignore
+        res(handlePromise.onSuccess('data'))
+        // @ts-ignore
+        rej(handlePromise.onError('error'))
+    })
+}
+
+const resolvePromise = () => {
+    // @ts-ignore
+    handlePromise.promise.then((res) => {
+       console.log(res)
+    })
+}
+const rejectPromise = () => {
+    // @ts-ignore
+    handlePromise.promise.catch((rej) => {
+        console.log(rej)
+    })
+}
 
 // Task 06
 // Создайте промис, который через 1 с возвращает строку "My name is".

@@ -23,14 +23,16 @@ console.log('lesson 2');
 
 // Task 01
 // Реализовать функцию sum которая суммирует 2 числа следующим образом sum(3)(6) === 9
+/*console.log('------task 1 -----')
 function sum(a: number) {
     return function (b: number) {
         return a + b; // берёт "a" из внешнего лексического окружения
     };
 }
 
-console.log(sum(3)(6))
-alert(sum(1)(2))
+console.log(sum(3)(6))*/
+
+
 // Task 02
 // Реализовать функцию makescounter которая работает следующим образом:
 // const counter = makescounter();
@@ -40,19 +42,20 @@ alert(sum(1)(2))
 // counter2(); // 1
 // counter(); // 3
 // @ts-ignore
-const makescounter = () => {
-    let count = 0;
-    return () => {
-        count++
-        console.log(count)
-    }
+
+/*const makescounter = () => {
+        let count = 0
+        return () => {
+            console.log(++count)
+        }
 }
-const counter3 = makescounter();
-counter3(); // 1
-counter3(); // 2
+const counter = makescounter();
+counter(); // 1
+counter(); // 2
 const counter2 = makescounter();
 counter2(); // 1
-counter3(); // 3
+counter(); // 3*/
+
 
 // Task 03
 // Переписать функцию из Task 02 так, что бы она принимала число в качестве аргумента и это число было стартовым значением счетчика
@@ -61,19 +64,28 @@ counter3(); // 3
 // decrease: -1
 // reset: установить счетчик в 0;
 // set: установить счетчик в заданное значение;
-const makeCounter = (a: number) => {
-    let count = a;
+
+/*
+console.log('------task 3 -----')
+const makescounter = (a: number) => {
+    let count = a
     return () => {
-        let increase = () => count++
-        let decrease = () => count--
+        let increase = () => ++count
+        let decrease = () => --count
         let reset = () => count = 0
         let set = () => count = a
-
-        console.log(count)
+        console.log('increase ' + increase())
+        console.log('decrease ' + decrease())
+        console.log('reset ' + reset())
+        console.log('set ' + set())
     }
 }
-const counter = makeCounter(0);
-counter();
+const counter = makescounter(0);
+counter(); // 1 0 0 0
+const counter2 = makescounter(5);
+counter2(); // 6 5 0 5
+*/
+
 
 // Task 04*
 // Реализовать функцию superSum которая принимает число в качестве аргумента, которое указывает на количество слагаемых
@@ -84,31 +96,43 @@ counter();
 // 4) superSum(3)(2,5,3) //10
 // 5) superSum(3)(2,5)(3) //10
 // 6) superSum(3)(2,5)(3,9) //10
+// P.S. типизируйте только аргументы, а при вызове функции используйте @ts-ignore
+console.log('------task 4 -----')
 
-function superSum(n:number) {
-    if (n === 0) return 0;
-    if (n === 1) return (num: number) => num;
 
-    let _arguments: number[] = [];
+const superSum = (a: number) => {
+    if (a === 0) return 0;
+    if (a === 1) return a;
 
-    function helper(...args: number[]) {
-        _arguments = [..._arguments, ...args];
-        if(_arguments.length >= n) {
-            _arguments.length = n;
-            return _arguments.reduce((acc, number) => acc + number)
+    let numbers: Array<number> = []
+
+    function summer(...arg: Array<number> ) {
+        numbers=[...numbers, ...arg];
+
+        if(numbers.length >= a) {
+            numbers.length = a;
+            return numbers.reduce((acc, number) => acc + number)
         } else {
-            return helper;
+            return summer;
         }
     }
-    return helper;
+    return summer()
 }
+// @ts-ignore
+console.log(superSum(3)(2)(5)(3))
+// @ts-ignore
+console.log(superSum(3)(2,5)(3,9))
 
-// P.S. типизируйте только аргументы, а при вызове функции используйте @ts-ignore
+
+
+
+
 
 // Task 05
 // решить все задачи по рекурсии которые даны в конце статьи https://learn.javascript.ru/recursion
 // @ts-ignore
-function sumTo(n) {
+
+/*function sumTo(n) {
     if (n == 1) return 1;
     return n + sumTo(n - 1)
 }
@@ -121,10 +145,11 @@ function factorial(n) {
     return n * factorial(n - 1)
 }
 
-alert(factorial(5)); // 120
+alert(factorial(5)); // 120*/
 
 
 // @ts-ignore
+/*
 function fib(n) {
     if (n == 1 || n == 2) return 1;
     return fib(n - 1) + fib(n - 2)
@@ -133,10 +158,11 @@ function fib(n) {
 alert(fib(2)); // 1
 alert(fib(3)); // 2
 alert(fib(7)); // 13
+*/
 
 
 // @ts-ignore
-let list = {
+/*let list = {
     value: 1,
     next: {
         value: 2,
@@ -148,10 +174,10 @@ let list = {
             }
         }
     }
-};
+};*/
 
 // @ts-ignore
-function printList(list) {
+/*function printList(list) {
 
     alert(list.value); // выводим текущий элемент
 
@@ -176,10 +202,10 @@ let list = {
             }
         }
     }
-};
+};*/
 
 // @ts-ignore
-function printList(list) {
+/*function printList(list) {
 
     // выводим текущий элемент
 
@@ -189,7 +215,8 @@ function printList(list) {
     alert(list.value);
 }
 
-printList(list);
+printList(list);*/
+
 // Task 06
 // написать функцию, которая повторяет функционал метода flat массива на всю глубину.
 
@@ -207,7 +234,7 @@ printList(list);
 
 
 // @ts-ignore
-alert(makeFlat([333, [222, [444, [985]]]]))
+/*alert(makeFlat([333, [222, [444, [985]]]]))*/
 
 // just a plug
 export default () => {
